@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+ <body>
+ <!-- The calcultor can only do two input commands. Anything above two imputs will cause a NAN value. -->
+  <style>
+  body{background-image:url("http://images.designtrends.com/wp-content/uploads/2015/12/15114043/Brushed-Metal-Background-.jpg")}
+  h1{
+  text-weight:Bold;
+text-color:GREEN;
+text-align: Center;
+font-family: Castellar;
+background-color:ORANGE;
+border-style:dotted solid dotted; <!-- top and bottom are dotted, left and right are solid -->
+border-color:Purple;
+font-size: 40px;
+  }
+  </style>
+  <h1> Calculator Javascript JS11 </h1>
+  <h2> By:Anando </h2>
+  <img src="http://frutbunn.tk/wp-content/uploads/2015/06/js.png" alt="javascriptimage" style="width:600px;height:384px;" align="right">
+  
+  <p><input id="yourNumber" type="text" style="height: 60px; font-size: 52px; width: 350px"/></p>
+
+  <h2>Basic Functions</h2>
+  <button onclick="onclickNumber('7')" type="button" style="height: 70px; font-size: 40px; width: 70px">7</button>
+  <button onclick="onclickNumber('8')" type="button" style="height: 70px; font-size: 40px; width: 70px">8</button>
+  <button onclick="onclickNumber('9')" type="button" style="height: 70px; font-size: 40px; width: 70px">9</button>
+  <button onclick="onclickNumber('+')" type="button" style="height: 70px; font-size: 40px; width: 70px">+</button>
+  </p>
+
+  <p>
+  <button onclick="onclickNumber('4')" type="button" style="height: 70px; font-size: 40px; width: 70px">4</button>
+  <button onclick="onclickNumber('5')" type="button" style="height: 70px; font-size: 40px; width: 70px">5</button>
+  <button onclick="onclickNumber('6')" type="button" style="height: 70px; font-size: 40px; width: 70px">6</button>
+  <button onclick="onclickNumber('-')" type="button" style="height: 70px; font-size: 40px; width: 70px">-</button>
+  </p>
+
+  <p>
+  <button onclick="onclickNumber('1')" type="button" style="height: 70px; font-size: 40px; width: 70px">1</button>
+  <button onclick="onclickNumber('2')" type="button" style="height: 70px; font-size: 40px; width: 70px">2</button>
+  <button onclick="onclickNumber('3')" type="button" style="height: 70px; font-size: 40px; width: 70px">3</button>
+  <button onclick="onclickNumber('*')" type="button" style="height: 70px; font-size: 40px; width: 70px">*</button>
+  </p>
+
+  <p>
+ <button onclick="onclickClearall()" type="button" style="height: 70px; font-size: 40px; width: 70px">C</button>
+  <button onclick="onclickClear()" type="button" style="height: 70px; font-size: 40px; width: 70px">CE</button>
+  <button onclick="onclickNumber('0')" type="button" style="height: 70px; font-size: 40px; width: 70px">0</button>
+  <button onclick="totalOfNumbers()" type="button" style="height: 70px; font-size: 40px; width: 70px">=</button>
+  <button onclick="onclickNumber('/')" type="button" style="height: 70px; font-size: 40px; width: 70px">/</button>
+  <h2>Scientific functions</h2>
+  </p>
+  <p>
+  <button onclick="onclickNumber('Square Root:')" type="button" style="height: 70px; font-size: 40px; width: 70px">&#8730 </button>	
+  <button onclick="onclickNumber('^')" type="button" style="height: 70px; font-size: 40px; width: 70px">x^y </button>	
+  <button onclick="onclickNumber('tan')" type="button" style="height: 70px; font-size: 40px; width: 70px">tan </button>	
+  <button onclick="onclickNumber('sin')" type="button" style="height: 70px; font-size: 40px; width: 70px">sin </button>
+  <button onclick="onclickNumber('cos')" type="button" style="height: 70px; font-size: 40px; width: 70px">cos </button>
+   <button onclick="onclickNumber('.')" type="button" style="height: 70px; font-size: 40px; width: 70px">.</button>
+  </p>
+  <p>
+<button onclick="onclickMS()" type="button" style="height: 70px; font-size: 40px; width: 70px">MS</button>
+<button onclick="onclickMC()" type="button" style="height: 70px; font-size: 40px; width: 70px">MC</button>    
+<button onclick="onclickMR()" type="button" style="height: 70px; font-size: 40px; width: 70px">MR</button>
+<button onclick="onclickM()" type="button" style="height: 70px; font-size: 40px; width: 70px">M+</button>
+<button onclick="onclickback('<--;')" type="button" style="height: 70px; font-size: 40px; width: 70px"><-- </button>
+<button onclick="newtotalOfNumbers()" type="button" style="height: 70px; font-size: 40px; width: 70px">=</button><!-- has a new
+ function onclickback(), because its using backspace function. THe quoted sumbols,words, or numbers of onclicks are what get printed to the
+ textbox when you click the certain buttons.
+Once you click certain buttons such as the operator buttons, it could use the functions in the script tag and outputs the value in the text box. -->
+  <script>
+
+   var output = document.getElementById("yourNumber"); 
+   var input = document.getElementById("yourNumber"); 
+   input.disabled = true;
+   var clearInput = false;
+   
+  function onclickMS()
+{ 
+		save = (input.value);
+}
+function onclickMC()
+{ 
+    save = "";
+}
+function onclickM()
+{ 
+    var newsave = +save + +input.value;
+    input.value = newsave
+}
+
+function onclickMR()
+{
+		input.value = input.value + save;
+}
+   function onclickNumber(x) 
+   {// Append to number.
+		if(clearInput)
+			{
+				input.value = "";
+				clearInput = false;
+			} 
+        input.value += x; 
+		
+		if(x == "+" || x == "-" || x == "*" || x == "/"){ //if x == any operator 
+        
+		output = document.getElementById("yourNumber");
+        input = document.getElementById("yourNumber");
+        number1 = output.value; // saves the tbe values entered before the operator, and saves operator aswell.
+		output.value = "";  // displays a clear text box after the operator is clicked.
+       }
+   }
+   var position;
+var a; 
+var b; 
+var total; 
+var save;
+var number1;
+var number2;
+var numberLength;
+    
+   function totalOfNumbers(x){
+if (number1.indexOf("+") >= 0)
+   {
+   input = document.getElementById("yourNumber").value; // retrieves value of inputted number
+   number2 = output.value; // saves values entered after operator. After operator entered, textbox was blank, so numbers inputed after get saved into number 2.
+   numberLength = number1.length; // lenght of values and operator
+   number1 = number1.substr(0,numberLength - 1); //subtract 1 cause removing operator positon, so that its just length of values.
+   number1 = parseFloat(number1);
+   number2 = parseFloat(number2);
+   total = number1 + number2;
+   output.value = total;
+   }
+   
+    else if (number1.indexOf("-") >=0)
+   {
+   input = document.getElementById("yourNumber").value; // retrieves value of inputted number
+   number2 = output.value;
+   numberLength = number1.length;
+   number1 = number1  .substr(0,numberLength - 1);
+   number1 = parseFloat(number1);
+   number2 = parseFloat(number2);
+   total = number1 - number2;
+   output.value= total;
+   }
+   
+      else if (number1.indexOf("*") >=0)
+   {
+   input = document.getElementById("yourNumber").value; // retrieves value of inputted number
+   number2 = output.value;
+   number1 = parseFloat(number1);
+   number2 = parseFloat(number2);
+   total = number1 * number2;
+   output.value = total;
+   }
+   
+     else if (number1.indexOf("/") >=0)
+   {
+   input = document.getElementById("yourNumber").value; // retrieves value of inputted number
+   number2 = output.value;
+   number1 = parseFloat(number1);
+   number2 = parseFloat(number2);
+   total = number1 / number2;
+   output.value = total;
+   }
+   }
+    function newtotalOfNumbers(x)
+   {
+   var position;
+   var a;
+   var b;
+   var total;
+   input = document.getElementById("yourNumber").value;
+   
+   	if (input.indexOf("Square Root:") >= 0)
+    { 
+		 position = input.indexOf(':')
+		 b = input.substring(position + 1) // saves value from position and onwards to end. This is the value thats being rooted.
+		 total = Math.sqrt(b); // square root
+		 output.value = total; // outputs the value in the input ""yourname"" part of the id. WHich is then shown in the typer.
+    }
+	
+	else if (input.indexOf("^") >= 0)
+    { 
+		 position = input.indexOf('^')
+		 a = input.substring(0, position) // saves the value from 0 to position, basically first input value(base)
+		 b = input.substring(position + 1) // saves value from position +4 and onwards to end. THis is the value thats the exponent.
+		 total = Math.pow(a,b); // To power function
+		 output.value = total; // outputs the value in the input ""yourname"" part of the id. WHich is then shown in the typer.
+    }
+	
+	else if (input.indexOf("tan") >= 0)
+    { 
+		 position = input.indexOf('n')
+		 b = input.substring(position + 1) // saves value from position and onwards to end. THis is the value thats being used by tan.
+		 total = Math.tan(b); // To power function
+		 output.value = total; // outputs the value in the input ""yourname"" part of the id. WHich is then shown in the typer.
+    }
+	
+	else if (input.indexOf("sin") >= 0)
+    { 
+		 position = input.indexOf('n')
+		 b = input.substring(position + 1) // saves value from position and onwards to end. THis is the value thats being used by sin.
+		 total = Math.sin(b); // To power function
+		 output.value = total; // outputs the value in the input ""yourname"" part of the id. WHich is then shown in the typer.
+    }
+	
+	else if (input.indexOf("cos") >= 0)
+    { 
+		 position = input.indexOf('s')
+		 b = input.substring(position + 1) // saves value from position and onwards to end. THis is the value thats being used by cos.
+		 total = Math.cos(b); // To power function
+		 output.value = total; // outputs the value in the input ""yourname"" part of the id. WHich is then shown in the typer.
+    }
+   }
+      
+   
+   
+   function onclickback() {
+    var value = document.getElementById("yourNumber").value;  // saves whatever value you typed in using the numbers into a new variable. It has .value at end cause its saving a value
+    var output_ = value.substr(0, value.length - 1); /* another new variable is created to find the length of the old variable. This length
+	of old variable which contains the numbers u entered, is subtracted by 1, cuz u are trying to find the backspace value. So substring is 
+	values from 0 to length of id -1.*/
+	output.value=output_  // The substring is output into the rectangle box.
+}
+ 
+
+   function onclickClear() 
+    {
+		clearInput = true;
+		output = document.getElementById("yourNumber");
+		input = document.getElementById("yourNumber");
+		output.value = "";
+    }
+	
+	
+	function onclickClearall() 
+    {
+		clearInput = true;
+		output = document.getElementById("yourNumber");
+		input = document.getElementById("yourNumber");
+		output.value = "";
+    }
+  </script>
+ </body>
+</html>
